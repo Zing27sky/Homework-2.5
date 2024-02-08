@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.homeworkemployeebook.model.Employee;
 import pro.sky.homeworkemployeebook.service.EmployeeService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -14,6 +16,10 @@ public class EmployeeController {
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
+    }
+    @GetMapping
+    public List<Employee> getAll(){
+        return employeeService.getEmployees();
     }
 
     @GetMapping("/add")
